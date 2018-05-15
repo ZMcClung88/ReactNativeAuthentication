@@ -4,12 +4,30 @@ import firebase from 'firebase';
 import { Button, Card, CardSection, Input, Spinner } from './common';
 
 class LoginForm extends Component {
-  state = { email: '', password: '', error: '', loading: false };
+  constructor(props) {
+    super(props);
+
+    this.state = { email: '', password: '', error: '', loading: false };
+  }
 
   onButtonPress() {
     const { email, password } = this.state;
 
     this.setState({ error: '', loading: true });
+
+    // firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
+    //   firebase
+    //     .auth()
+    //     .signInWithEmailAndPassword(email, password)
+    //     .then(this.onLoginSuccess.bind(this))
+    //     .catch(() => {
+    //       firebase
+    //         .auth()
+    //         .createUserWithEmailAndPassword(email, password)
+    //         .then(this.onLoginSuccess.bind(this))
+    //         .catch(this.onLoginFail.bind(this));
+    //     });
+    // }
 
     firebase
       .auth()
